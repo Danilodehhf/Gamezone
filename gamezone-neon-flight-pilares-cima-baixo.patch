@@ -1,0 +1,96 @@
+diff --git a/Jogos.html b/Jogos.html
+index 0905c15..845005c 100644
+--- a/Jogos.html
++++ b/Jogos.html
+@@ -7367,7 +7367,16 @@ function neonFlight(){
+ 
+     const assetsFlight={
+         nave:carregarImagem("./Imagens/Texturas/Neon Flight/nave.png"),
+-        pilar:carregarImagem("./Imagens/Texturas/Neon Flight/pilar.png")
++
++        pilarCima:
++            carregarImagem(
++                "./Imagens/Texturas/Neon Flight/pilar parte de cima.png"
++            ),
++
++        pilarBaixo:
++            carregarImagem(
++                "./Imagens/Texturas/Neon Flight/pilar parte de baixo.png"
++            )
+     };
+ 
+ 
+@@ -7625,18 +7634,66 @@ function neonFlight(){
+             ctx.shadowBlur=18;
+             ctx.shadowColor="#26cfff";
+ 
+-            if(spritePronto(assetsFlight.pilar)){
+-                ctx.drawImage(assetsFlight.pilar,portal.x-8,0,portal.w+16,topoFim);
+-                ctx.drawImage(assetsFlight.pilar,portal.x-8,baixoInicio,portal.w+16,550-baixoInicio);
++            if(
++                spritePronto(
++                    assetsFlight.pilarCima
++                )&&
++                spritePronto(
++                    assetsFlight.pilarBaixo
++                )
++            ){
++
++                ctx.drawImage(
++                    assetsFlight.pilarCima,
++                    portal.x-8,
++                    0,
++                    portal.w+16,
++                    topoFim
++                );
++
++                ctx.drawImage(
++                    assetsFlight.pilarBaixo,
++                    portal.x-8,
++                    baixoInicio,
++                    portal.w+16,
++                    550-baixoInicio
++                );
++
+             }
+             else{
++
+                 ctx.fillStyle=gradPortal;
+-                ctx.fillRect(portal.x,0,portal.w,topoFim);
+-                ctx.fillRect(portal.x,baixoInicio,portal.w,550-baixoInicio);
++
++                ctx.fillRect(
++                    portal.x,
++                    0,
++                    portal.w,
++                    topoFim
++                );
++
++                ctx.fillRect(
++                    portal.x,
++                    baixoInicio,
++                    portal.w,
++                    550-baixoInicio
++                );
++
+                 ctx.shadowBlur=0;
+                 ctx.fillStyle="#b7f6ff";
+-                ctx.fillRect(portal.x-8,topoFim-12,portal.w+16,12);
+-                ctx.fillRect(portal.x-8,baixoInicio,portal.w+16,12);
++
++                ctx.fillRect(
++                    portal.x-8,
++                    topoFim-12,
++                    portal.w+16,
++                    12
++                );
++
++                ctx.fillRect(
++                    portal.x-8,
++                    baixoInicio,
++                    portal.w+16,
++                    12
++                );
+             }
+ 
+             ctx.shadowBlur=0;
