@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<link
+    rel="icon"
+    type="image/x-icon"
+    href="./Imagens/Favicon/favicon.ico"
+>
+
+<link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="./Imagens/Favicon/favicon-32x32.png"
+>
+
+<link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="./Imagens/Favicon/favicon-16x16.png"
+>
+
+<link
+    rel="apple-touch-icon"
+    href="./Imagens/Favicon/apple-touch-icon.png"
+>
+
+
+<title>GameZone</title>
+
+
+<style>
+
+@font-face{
+
+    font-family:"Minercraftory";
+
+    src:
+        url("./fonts/Minercraftory.ttf")
+        format("truetype");
+
+    font-weight:normal;
+    font-style:normal;
+
+    font-display:swap;
+}
+
+
+*{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:
+        "Minercraftory",
+        Arial,
+        sans-serif;
+}
+
+
+body{
+
+    background:#07070b;
+
+    color:white;
+
+    min-height:100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+
+    padding:22px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            #191923,
+            #0c0c12
+        );
+
+    border-bottom:
+        2px solid #743cff;
+}
+
+
+header h1{
+
+    color:#9d70ff;
+
+    font-size:40px;
+
+    text-shadow:
+        0 0 18px #743cff;
+}
+
+
+nav{
+
+    margin-top:15px;
+}
+
+
+nav a{
+
+    color:#ddd;
+
+    text-decoration:none;
+
+    margin:
+        0 18px;
+
+    transition:.2s;
+}
+
+
+nav a:hover{
+
+    color:#ad83ff;
+}
+
+
+/* =========================
+   BANNER
+========================= */
+
+.banner{
+
+    text-align:center;
+
+    padding:
+        90px 20px;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 30%,
+            #662cb955,
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 80% 70%,
+            #32126a88,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #1a0a36,
+            #07070b
+        );
+}
+
+
+.banner h2{
+
+    font-size:48px;
+
+    margin-bottom:15px;
+
+    color:white;
+
+    text-shadow:
+        0 0 20px #743cff;
+}
+
+
+.banner p{
+
+    color:#ccc;
+
+    font-size:19px;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   SOBRE
+========================= */
+
+.sobre{
+
+    padding:
+        70px 7%;
+
+    display:flex;
+
+    justify-content:center;
+}
+
+
+.sobre-container{
+
+    width:100%;
+
+    max-width:1050px;
+
+    padding:
+        45px;
+
+    border:
+        1px solid #383844;
+
+    border-radius:
+        18px;
+
+    background:
+
+        radial-gradient(
+            circle at top right,
+            #743cff22,
+            transparent 35%
+        ),
+
+        linear-gradient(
+            145deg,
+            #1d1d28,
+            #0f0f15
+        );
+
+    box-shadow:
+
+        0 18px 50px #0008,
+
+        0 0 35px #743cff22;
+}
+
+
+.etiqueta{
+
+    display:inline-block;
+
+    margin-bottom:14px;
+
+    color:#a77aff;
+
+    font-size:14px;
+
+    letter-spacing:2px;
+}
+
+
+.sobre-container h2{
+
+    margin-bottom:30px;
+
+    color:#c5a9ff;
+
+    font-size:36px;
+
+    text-shadow:
+        0 0 14px #743cff55;
+}
+
+
+.texto{
+
+    color:#c7c7cf;
+
+    font-size:17px;
+
+    line-height:1.9;
+}
+
+
+.texto p{
+
+    margin-bottom:20px;
+}
+
+
+.destaque{
+
+    margin:
+        35px 0;
+
+    padding:
+        24px;
+
+    border-left:
+        4px solid #743cff;
+
+    border-radius:
+        8px;
+
+    background:
+        #743cff12;
+
+    color:#e5dcff;
+
+    line-height:1.9;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    padding:35px;
+
+    text-align:center;
+
+    color:#777;
+
+    background:#15151c;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    header h1{
+
+        font-size:32px;
+    }
+
+
+    nav a{
+
+        margin:
+            0 8px;
+    }
+
+
+    .banner{
+
+        padding:
+            65px 20px;
+    }
+
+
+    .banner h2{
+
+        font-size:34px;
+    }
+
+
+    .sobre{
+
+        padding:
+            40px 18px;
+    }
+
+
+    .sobre-container{
+
+        padding:
+            28px 22px;
+    }
+
+
+    .sobre-container h2{
+
+        font-size:27px;
+    }
+
+
+    .texto{
+
+        font-size:15px;
+
+        line-height:1.8;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <h1>🎮 GameZone</h1>
+
+
+    <nav>
+
+        <a href="Inicio.html">
+            Início
+        </a>
+
+        <a href="Jogos.html">
+            Jogos
+        </a>
+
+        <a href="Sobre.html">
+            Sobre
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     BANNER
+========================= -->
+
+<section class="banner">
+
+    <h2>
+        Conheça o GameZone
+    </h2>
+
+    <p>
+        Um universo feito de jogos,
+        criatividade e tecnologia.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     CONTEÚDO
+========================= -->
+
+<section class="sobre">
+
+    <div class="sobre-container">
+
+        <span class="etiqueta">
+            SOBRE O GAMEZONE
+        </span>
+
+
+        <h2>
+            Muito mais que uma coleção de jogos
+        </h2>
+
+
+        <div class="texto">
+
+            <p>
+                O GameZone é um projeto criado para unir
+                diversão, criatividade e tecnologia em um único lugar.
+            </p>
+
+            <p>
+                Nossa proposta é oferecer uma experiência simples,
+                rápida e divertida para quem gosta do universo dos games.
+            </p>
+
+            <p>
+                O projeto foi desenvolvido pensando em jogadores
+                que procuram experiências diferentes diretamente pelo navegador.
+            </p>
+
+            <p>
+                Desde o início, o GameZone foi planejado
+                para possuir uma identidade visual própria.
+            </p>
+
+            <p>
+                O tema escuro, as cores roxas e os efeitos luminosos
+                fazem parte da identidade principal da plataforma.
+            </p>
+
+            <p>
+                Cada detalhe visual foi pensado para transmitir
+                a sensação de estar entrando em um verdadeiro ambiente gamer.
+            </p>
+
+            <p>
+                O GameZone também busca manter uma navegação simples,
+                permitindo que qualquer pessoa consiga utilizar o site facilmente.
+            </p>
+
+            <p>
+                Não queremos apenas criar páginas,
+                mas construir experiências interativas para os usuários.
+            </p>
+
+            <p>
+                Por isso, programação e criatividade
+                trabalham juntas durante todo o desenvolvimento.
+            </p>
+
+            <p>
+                Cada nova ideia pode se transformar em
+                uma nova mecânica, uma nova experiência ou uma nova forma de jogar.
+            </p>
+
+
+            <div class="destaque">
+
+                O GameZone está em constante evolução.
+                A ideia é continuar expandindo o projeto,
+                criando novas experiências e melhorando
+                cada vez mais tudo o que já existe.
+
+            </div>
+
+
+            <p>
+                O desenvolvimento do GameZone também representa
+                uma oportunidade de aprender diferentes conceitos de programação.
+            </p>
+
+            <p>
+                Lógica, animações, movimentação, colisões,
+                interfaces e interações fazem parte desse processo.
+            </p>
+
+            <p>
+                O projeto mostra como códigos podem deixar de ser
+                apenas comandos e se transformar em experiências divertidas.
+            </p>
+
+            <p>
+                Além da programação,
+                a parte visual possui grande importância dentro do GameZone.
+            </p>
+
+            <p>
+                Personagens, cenários, ícones e texturas
+                ajudam a criar uma identidade para cada experiência.
+            </p>
+
+            <p>
+                Mesmo com estilos diferentes,
+                todos os elementos fazem parte do mesmo universo GameZone.
+            </p>
+
+            <p>
+                O objetivo é manter uma identidade consistente
+                em todas as páginas e recursos da plataforma.
+            </p>
+
+            <p>
+                Também buscamos equilibrar aparência e desempenho,
+                evitando que os elementos visuais prejudiquem a experiência.
+            </p>
+
+            <p>
+                A plataforma foi pensada para continuar crescendo
+                conforme novas ideias forem surgindo.
+            </p>
+
+            <p>
+                Novos recursos podem ser adicionados
+                sem abandonar aquilo que caracteriza o GameZone.
+            </p>
+
+            <p>
+                O projeto também pode receber no futuro
+                novos sistemas de pontuação, desafios e conquistas.
+            </p>
+
+            <p>
+                Rankings e outras formas de competição
+                também podem fazer parte dessa evolução.
+            </p>
+
+            <p>
+                A intenção é transformar o GameZone
+                em um espaço cada vez mais completo para quem gosta de jogar.
+            </p>
+
+            <p>
+                Ao mesmo tempo,
+                queremos preservar a simplicidade que faz parte da ideia original.
+            </p>
+
+            <p>
+                O usuário deve conseguir entrar,
+                navegar e compreender rapidamente tudo o que está disponível.
+            </p>
+
+            <p>
+                O GameZone é também um projeto de experimentação,
+                onde novas ideias podem ser testadas e aprimoradas.
+            </p>
+
+            <p>
+                Cada atualização permite corrigir detalhes,
+                melhorar experiências e adicionar novas possibilidades.
+            </p>
+
+            <p>
+                Dessa forma,
+                o projeto continua evoluindo junto com seu desenvolvimento.
+            </p>
+
+            <p>
+                Nossa principal ideia é mostrar
+                que tecnologia também pode ser uma ferramenta para criar diversão.
+            </p>
+
+            <p>
+                E é exatamente isso que representa o GameZone:
+                um universo onde código, criatividade e jogos se encontram.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 Todos os direitos reservados
+        para GameZone™ e LUNI™
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
