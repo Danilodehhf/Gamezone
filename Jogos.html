@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="./Imagens/Favicon/favicon.png">
+<link rel="icon" type="image/x-icon" href="./Imagens/Favicon/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="./Imagens/Favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="./Imagens/Favicon/favicon-16x16.png">
 <link rel="apple-touch-icon" href="./Imagens/Favicon/apple-touch-icon.png">
@@ -13,7 +13,7 @@
 <style>
 @font-face {
     font-family: "Minercraftory";
-    src: url("./Fontes/Minercraftory.ttf") format("truetype");
+    src: url("./fonts/Minercraftory.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -300,170 +300,40 @@ footer{
 
 #controlesMobile{
     display:none;
+    width:min(360px,94vw);
+    margin:14px auto 4px;
+    grid-template-columns:repeat(3,1fr);
+    gap:9px;
+    user-select:none;
+    touch-action:none;
+}
+
+.controleMobile{
+    min-height:54px;
+    padding:8px;
+    font-size:22px;
+    border:1px solid #6642aa;
+    background:#1d182a;
+}
+
+.controleMobile:active,
+.controleMobile.pressionado{
+    background:#743cff;
+    transform:scale(.96);
+}
+
+.controleMobile.vazio{
+    visibility:hidden;
+}
+
+.controleMobile.acao{
+    grid-column:1 / -1;
+    min-height:48px;
+    font-size:15px;
 }
 
 body.modo-celular #controlesMobile{
-    display:block;
-}
-
-
-/* =========================
-   JOYSTICK MOBILE
-========================= */
-
-#joystickMobile{
-    position:fixed;
-    left:max(18px,env(safe-area-inset-left));
-    bottom:max(22px,env(safe-area-inset-bottom));
-    z-index:5000;
-
-    width:132px;
-    height:132px;
-
-    border-radius:50%;
-
-    border:
-        2px solid #8f68e8;
-
-    background:
-        radial-gradient(
-            circle,
-            #312247 0 33%,
-            #1b1728 34% 64%,
-            #0d0c14 65%
-        );
-
-    box-shadow:
-        0 0 22px #743cff66,
-        inset 0 0 28px #743cff22;
-
-    user-select:none;
-    touch-action:none;
-    -webkit-user-select:none;
-}
-
-#joystickMobile::before,
-#joystickMobile::after{
-    content:"";
-    position:absolute;
-    pointer-events:none;
-    opacity:.23;
-}
-
-#joystickMobile::before{
-    left:50%;
-    top:13px;
-    bottom:13px;
-    width:1px;
-    background:#fff;
-}
-
-#joystickMobile::after{
-    top:50%;
-    left:13px;
-    right:13px;
-    height:1px;
-    background:#fff;
-}
-
-#joystickKnob{
-    position:absolute;
-    left:50%;
-    top:50%;
-
-    width:58px;
-    height:58px;
-
-    border-radius:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    border:
-        2px solid #c4abff;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #b797ff,
-            #743cff 45%,
-            #3a176f
-        );
-
-    box-shadow:
-        0 6px 18px #0008,
-        0 0 18px #743cff99;
-
-    pointer-events:none;
-}
-
-#acaoMobile{
-    position:fixed;
-    right:max(24px,env(safe-area-inset-right));
-    bottom:max(42px,calc(env(safe-area-inset-bottom) + 20px));
-    z-index:5000;
-
-    width:86px;
-    height:86px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    border:
-        2px solid #c3a7ff;
-
-    padding:0;
-
-    color:white;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #ad8cff,
-            #743cff 52%,
-            #351364
-        );
-
-    box-shadow:
-        0 8px 24px #0009,
-        0 0 24px #743cff88;
-
-    font-size:13px;
-    line-height:1.15;
-    text-align:center;
-
-    user-select:none;
-    touch-action:none;
-    -webkit-user-select:none;
-}
-
-#acaoMobile:active,
-#acaoMobile.pressionado{
-    transform:scale(.91);
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #d4c3ff,
-            #945fff 50%,
-            #4a1d83
-        );
-}
-
-body.modo-celular #controlesMobile{
-    pointer-events:none;
-}
-
-body.modo-celular #joystickMobile,
-body.modo-celular #acaoMobile{
-    pointer-events:auto;
-}
-
-body:not(.modo-celular) #joystickMobile,
-body:not(.modo-celular) #acaoMobile{
-    display:none;
+    display:grid;
 }
 
 body.modo-celular #gameCanvas{
@@ -475,9 +345,7 @@ body.modo-celular #gameCanvas{
 }
 
 body.modo-celular #telaJogo{
-    padding:
-        10px 8px
-        max(170px,calc(env(safe-area-inset-bottom) + 155px));
+    padding:10px 8px 22px;
 }
 
 body.modo-celular #tituloJogo{
@@ -833,25 +701,54 @@ body.modo-celular .card button{
 
 <canvas id="gameCanvas" width="900" height="550"></canvas>
 
-<div
-    id="controlesMobile"
-    aria-label="Controles para celular"
->
-
-    <div
-        id="joystickMobile"
-        role="application"
-        aria-label="Joystick de movimento"
-    >
-        <div id="joystickKnob"></div>
-    </div>
+<div id="controlesMobile">
 
     <button
-        id="acaoMobile"
+        class="controleMobile vazio"
         type="button"
-        aria-label="Ação"
+        tabindex="-1"
+    ></button>
+
+    <button
+        class="controleMobile"
+        type="button"
+        data-tecla="w"
+        aria-label="Cima"
+    >▲</button>
+
+    <button
+        class="controleMobile vazio"
+        type="button"
+        tabindex="-1"
+    ></button>
+
+    <button
+        class="controleMobile"
+        type="button"
+        data-tecla="a"
+        aria-label="Esquerda"
+    >◀</button>
+
+    <button
+        class="controleMobile"
+        type="button"
+        data-tecla="s"
+        aria-label="Baixo"
+    >▼</button>
+
+    <button
+        class="controleMobile"
+        type="button"
+        data-tecla="d"
+        aria-label="Direita"
+    >▶</button>
+
+    <button
+        class="controleMobile acao"
+        type="button"
+        data-tecla="space"
     >
-        AÇÃO
+        AÇÃO / ESPAÇO
     </button>
 
 </div>
@@ -952,272 +849,60 @@ function escolherDispositivo(tipo){
 
 function configurarControlesMobile(){
 
-    const joystick=
-        document.getElementById(
-            "joystickMobile"
-        );
+    document
+        .querySelectorAll(
+            ".controleMobile[data-tecla]"
+        )
+        .forEach(botao=>{
 
-    const knob=
-        document.getElementById(
-            "joystickKnob"
-        );
-
-    const botaoAcao=
-        document.getElementById(
-            "acaoMobile"
-        );
+            const tecla=
+                botao.dataset.tecla;
 
 
-    let joystickAtivo=false;
-    let joystickPointerId=null;
+            const pressionar=e=>{
+
+                e.preventDefault();
+
+                teclas[tecla]=true;
+
+                botao.classList.add(
+                    "pressionado"
+                );
+            };
 
 
-    function limparDirecoes(){
+            const soltar=e=>{
 
-        teclas.w=false;
-        teclas.a=false;
-        teclas.s=false;
-        teclas.d=false;
+                e.preventDefault();
 
-        teclas.arrowup=false;
-        teclas.arrowleft=false;
-        teclas.arrowdown=false;
-        teclas.arrowright=false;
-    }
+                teclas[tecla]=false;
+
+                botao.classList.remove(
+                    "pressionado"
+                );
+            };
 
 
-    function centralizarJoystick(){
-
-        knob.style.transform=
-            "translate(-50%,-50%)";
-    }
-
-
-    function atualizarJoystick(
-        clientX,
-        clientY
-    ){
-
-        const rect=
-            joystick.getBoundingClientRect();
-
-        const centroX=
-            rect.left+
-            rect.width/2;
-
-        const centroY=
-            rect.top+
-            rect.height/2;
-
-
-        let dx=
-            clientX-
-            centroX;
-
-        let dy=
-            clientY-
-            centroY;
-
-
-        const limite=
-            rect.width*.31;
-
-        const distancia=
-            Math.hypot(
-                dx,
-                dy
+            botao.addEventListener(
+                "pointerdown",
+                pressionar
             );
 
-
-        if(distancia>limite){
-
-            dx=
-                dx/
-                distancia*
-                limite;
-
-            dy=
-                dy/
-                distancia*
-                limite;
-        }
-
-
-        knob.style.transform=
-            "translate(calc(-50% + "+
-            dx+
-            "px),calc(-50% + "+
-            dy+
-            "px))";
-
-
-        limparDirecoes();
-
-
-        const zonaMorta=
-            limite*.22;
-
-
-        if(
-            Math.abs(dx)>
-            zonaMorta
-        ){
-
-            if(dx<0){
-
-                teclas.a=true;
-                teclas.arrowleft=true;
-
-            }
-            else{
-
-                teclas.d=true;
-                teclas.arrowright=true;
-            }
-        }
-
-
-        if(
-            Math.abs(dy)>
-            zonaMorta
-        ){
-
-            if(dy<0){
-
-                teclas.w=true;
-                teclas.arrowup=true;
-
-            }
-            else{
-
-                teclas.s=true;
-                teclas.arrowdown=true;
-            }
-        }
-    }
-
-
-    function encerrarJoystick(){
-
-        joystickAtivo=false;
-        joystickPointerId=null;
-
-        limparDirecoes();
-        centralizarJoystick();
-    }
-
-
-    joystick.addEventListener(
-        "pointerdown",
-        e=>{
-
-            e.preventDefault();
-
-            joystickAtivo=true;
-            joystickPointerId=e.pointerId;
-
-            joystick.setPointerCapture(
-                e.pointerId
+            botao.addEventListener(
+                "pointerup",
+                soltar
             );
 
-            atualizarJoystick(
-                e.clientX,
-                e.clientY
+            botao.addEventListener(
+                "pointercancel",
+                soltar
             );
-        }
-    );
 
-
-    joystick.addEventListener(
-        "pointermove",
-        e=>{
-
-            if(
-                !joystickAtivo||
-                e.pointerId!==
-                joystickPointerId
-            )
-                return;
-
-
-            e.preventDefault();
-
-            atualizarJoystick(
-                e.clientX,
-                e.clientY
+            botao.addEventListener(
+                "pointerleave",
+                soltar
             );
-        }
-    );
-
-
-    joystick.addEventListener(
-        "pointerup",
-        e=>{
-
-            if(
-                e.pointerId===
-                joystickPointerId
-            )
-                encerrarJoystick();
-        }
-    );
-
-
-    joystick.addEventListener(
-        "pointercancel",
-        encerrarJoystick
-    );
-
-
-    function pressionarAcao(e){
-
-        e.preventDefault();
-
-        teclas.space=true;
-
-        botaoAcao.classList.add(
-            "pressionado"
-        );
-
-        if(
-            botaoAcao.setPointerCapture&&
-            e.pointerId!==undefined
-        ){
-
-            botaoAcao.setPointerCapture(
-                e.pointerId
-            );
-        }
-    }
-
-
-    function soltarAcao(e){
-
-        if(e)
-            e.preventDefault();
-
-        teclas.space=false;
-
-        botaoAcao.classList.remove(
-            "pressionado"
-        );
-    }
-
-
-    botaoAcao.addEventListener(
-        "pointerdown",
-        pressionarAcao
-    );
-
-    botaoAcao.addEventListener(
-        "pointerup",
-        soltarAcao
-    );
-
-    botaoAcao.addEventListener(
-        "pointercancel",
-        soltarAcao
-    );
+        });
 
 
     const atualizarMira=e=>{
@@ -1254,6 +939,7 @@ function configurarControlesMobile(){
         atualizarMira
     );
 }
+
 
 window.addEventListener(
     "DOMContentLoaded",
