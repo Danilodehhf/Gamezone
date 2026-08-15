@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="./Imagens/Favicon/favicon.ico">
+<link rel="icon" type="image/x-icon" href="./Imagens/Favicon/favicon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="./Imagens/Favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="./Imagens/Favicon/favicon-16x16.png">
 <link rel="apple-touch-icon" href="./Imagens/Favicon/apple-touch-icon.png">
@@ -127,11 +127,13 @@ nav a:hover{
 }
 
 .imagem img{
-    max-width:100%;
-    max-height:100%;
-    width:96px;
-    height:96px;
+    display:block;
+    width:100%;
+    height:100%;
+    max-width:195px;
+    max-height:195px;
     object-fit:contain;
+    object-position:center;
     image-rendering:auto;
     filter:drop-shadow(0 10px 18px rgba(0,0,0,.35));
 }
@@ -218,28 +220,312 @@ footer{
     background:#41414d;
 }
 
+
+/* =========================
+   SELETOR DE DISPOSITIVO
+========================= */
+
+#seletorDispositivo{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(4,4,10,.88);
+    backdrop-filter:blur(8px);
+}
+
+#seletorDispositivo.ativo{
+    display:flex;
+}
+
+.device-modal{
+    width:min(520px,94vw);
+    padding:30px;
+    text-align:center;
+    border:1px solid #7040d8;
+    border-radius:18px;
+    background:
+        radial-gradient(circle at top,#3d1d6c55,transparent 50%),
+        linear-gradient(145deg,#1d1d28,#0d0d13);
+    box-shadow:
+        0 25px 80px #000c,
+        0 0 35px #743cff55;
+}
+
+.device-modal h2{
+    margin-bottom:10px;
+    color:#c7afff;
+    font-size:28px;
+}
+
+.device-modal p{
+    margin-bottom:24px;
+    color:#aaa;
+    line-height:1.5;
+}
+
+.device-opcoes{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.device-opcao{
+    min-height:110px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    border:1px solid #474754;
+    background:#171720;
+}
+
+.device-opcao:hover{
+    border-color:#9a70ff;
+    background:#282038;
+}
+
+.device-icone{
+    font-size:34px;
+}
+
+.trocarDispositivo{
+    margin-top:13px;
+    padding:7px 12px;
+    font-size:12px;
+    background:#292932;
+}
+
+#controlesMobile{
+    display:none;
+    width:min(360px,94vw);
+    margin:14px auto 4px;
+    grid-template-columns:repeat(3,1fr);
+    gap:9px;
+    user-select:none;
+    touch-action:none;
+}
+
+.controleMobile{
+    min-height:54px;
+    padding:8px;
+    font-size:22px;
+    border:1px solid #6642aa;
+    background:#1d182a;
+}
+
+.controleMobile:active,
+.controleMobile.pressionado{
+    background:#743cff;
+    transform:scale(.96);
+}
+
+.controleMobile.vazio{
+    visibility:hidden;
+}
+
+.controleMobile.acao{
+    grid-column:1 / -1;
+    min-height:48px;
+    font-size:15px;
+}
+
+body.modo-celular #controlesMobile{
+    display:grid;
+}
+
+body.modo-celular #gameCanvas{
+    width:100%;
+    max-width:100%;
+    border-width:2px;
+    border-radius:10px;
+    touch-action:none;
+}
+
+body.modo-celular #telaJogo{
+    padding:10px 8px 22px;
+}
+
+body.modo-celular #tituloJogo{
+    font-size:24px;
+}
+
+body.modo-celular #informacoes{
+    font-size:14px;
+    line-height:1.45;
+}
+
+body.modo-celular #controles{
+    font-size:12px;
+    line-height:1.5;
+}
+
+body.modo-celular #telaJogo > button{
+    min-height:46px;
+    margin:5px 3px;
+    padding:10px 14px;
+}
+
+body.modo-celular header{
+    padding:16px 10px;
+}
+
+body.modo-celular header h1{
+    font-size:30px;
+}
+
+body.modo-celular nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:5px 14px;
+}
+
+body.modo-celular nav a{
+    margin:0;
+    padding:7px 5px;
+}
+
+body.modo-celular .banner{
+    padding:52px 15px;
+}
+
+body.modo-celular .banner h2{
+    font-size:31px;
+}
+
+body.modo-celular .banner p{
+    font-size:15px;
+    line-height:1.5;
+}
+
+body.modo-celular .jogos{
+    padding:35px 14px;
+}
+
+body.modo-celular .jogos h2{
+    font-size:25px;
+}
+
+body.modo-celular .cards{
+    gap:15px;
+}
+
+body.modo-celular .card{
+    width:100%;
+    max-width:390px;
+    padding:16px;
+}
+
+body.modo-celular .imagem{
+    height:135px;
+}
+
+body.modo-celular .imagem img{
+    max-width:185px;
+    max-height:100px;
+}
+
+body.modo-celular .card p{
+    min-height:0;
+}
+
+body.modo-celular .card button{
+    width:100%;
+    min-height:44px;
+}
+
 @media(max-width:600px){
     header h1{
-        font-size:32px;
+        font-size:30px;
+    }
+
+    .banner{
+        padding:55px 16px;
     }
 
     .banner h2{
-        font-size:36px;
+        font-size:32px;
+    }
+
+    .banner p{
+        font-size:15px;
+    }
+
+    nav{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:6px 12px;
     }
 
     nav a{
-        margin:0 8px;
+        margin:0;
+    }
+
+    .jogos{
+        padding:38px 14px;
     }
 
     .card{
         width:100%;
-        max-width:340px;
+        max-width:390px;
+    }
+
+    .device-opcoes{
+        grid-template-columns:1fr;
+    }
+
+    .device-modal{
+        padding:24px 18px;
     }
 }
 </style>
 </head>
 
 <body>
+
+<div
+    id="seletorDispositivo"
+    aria-hidden="true"
+>
+    <div class="device-modal">
+
+        <h2>Como você está acessando?</h2>
+
+        <p>
+            Escolha o dispositivo para o GameZone ajustar
+            a interface e os controles.
+        </p>
+
+        <div class="device-opcoes">
+
+            <button
+                class="device-opcao"
+                type="button"
+                onclick="escolherDispositivo('celular')"
+            >
+                <span class="device-icone">📱</span>
+                <span>Celular</span>
+            </button>
+
+            <button
+                class="device-opcao"
+                type="button"
+                onclick="escolherDispositivo('computador')"
+            >
+                <span class="device-icone">🖥️</span>
+                <span>Computador</span>
+            </button>
+
+        </div>
+
+    </div>
+</div>
 
 <div id="menu">
 
@@ -252,6 +538,14 @@ footer{
         <a href="Sobre.html">Sobre</a>
     
     </nav>
+
+    <button
+        class="trocarDispositivo"
+        type="button"
+        onclick="abrirSeletorDispositivo()"
+    >
+        📱 / 🖥️ Trocar dispositivo
+    </button>
 </header>
 
 <section class="banner">
@@ -266,56 +560,56 @@ footer{
 <div class="cards">
 
     <div class="card">
-        <div class="imagem"><img src="./Imagens/Texturas/Memory Game/Simbolo aventureiro.png" alt="Adventure Quest"></div>
+        <div class="imagem"><img src="./Imagens/Logos/adventure quest.png" alt="Adventure Quest"></div>
         <h3>Adventure Quest</h3>
         <p>Explore a floresta, pegue moedas e avance por novas fases.</p>
         <button onclick="jogar('Adventure Quest')">▶ Jogar</button>
     </div>
 
     <div class="card">
-        <div class="imagem"><img src="./Imagens/Texturas/Memory Game/Simbolo foguete.png" alt="Space Battle"></div>
+        <div class="imagem"><img src="./Imagens/Logos/space battle.png" alt="Space Battle"></div>
         <h3>Space Battle</h3>
         <p>Destrua as naves inimigas e sobreviva às ondas espaciais.</p>
         <button onclick="jogar('Space Battle')">▶ Jogar</button>
     </div>
 
     <div class="card">
-        <div class="imagem"><img src="./Imagens/Texturas/Memory Game/Simbolo carro.png" alt="Speed Racing"></div>
+        <div class="imagem"><img src="./Imagens/Logos/speed racing.png" alt="Speed Racing"></div>
         <h3>Speed Racing</h3>
         <p>Desvie dos outros carros e tente alcançar a maior pontuação.</p>
         <button onclick="jogar('Speed Racing')">▶ Jogar</button>
     </div>
 
     <div class="card">
-        <div class="imagem"><img src="./Imagens/Texturas/Memory Game/Simbolo zumbi.png" alt="Zombie Night"></div>
+        <div class="imagem"><img src="./Imagens/Logos/zombie night.png" alt="Zombie Night"></div>
         <h3>Zombie Night</h3>
         <p>Mire com o mouse, atire e sobreviva às hordas de zumbis.</p>
         <button onclick="jogar('Zombie Night')">▶ Jogar</button>
     </div>
 
     <div class="card">
-        <div class="imagem"><img src="./Imagens/Texturas/Memory Game/Simbolo castelo.png" alt="Tower Defense"></div>
+        <div class="imagem"><img src="./Imagens/Logos/tower defense.png" alt="Tower Defense"></div>
         <h3>Tower Defense</h3>
         <p>Posicione guardas e impeça os inimigos de destruírem sua base.</p>
         <button onclick="jogar('Tower Defense')">▶ Jogar</button>
     </div>
 
     <div class="card">
-        <div class="imagem"><img src="./Imagens/Texturas/Memory Game/Simbolo bloco.png" alt="Block Breaker"></div>
+        <div class="imagem"><img src="./Imagens/Logos/block breaker.png" alt="Block Breaker"></div>
         <h3>Block Breaker</h3>
         <p>Destrua todos os blocos sem deixar a bola cair.</p>
         <button onclick="jogar('Block Breaker')">▶ Jogar</button>
     </div>
 
     <div class="card">
-        <div class="imagem"><img src="./Imagens/Texturas/Memory Game/Simbolo cobra.png" alt="Snake Heart"></div>
+        <div class="imagem"><img src="./Imagens/Logos/snake heart.png" alt="Snake Heart"></div>
         <h3>Snake Heart</h3>
         <p>Coma as frutas, cresça e tente alcançar a maior pontuação.</p>
         <button onclick="jogar('Snake Heart')">▶ Jogar</button>
     </div>
 
     <div class="card">
-        <div class="imagem"><img src="./Imagens/Texturas/Memory Game/Carta virada.png" alt="Memory Game"></div>
+        <div class="imagem"><img src="./Imagens/Logos/memory game.png" alt="Memory Game"></div>
         <h3>Memory Game</h3>
         <p>Encontre todos os pares usando o menor número de tentativas.</p>
         <button onclick="jogar('Memory Game')">▶ Jogar</button>
@@ -337,6 +631,58 @@ footer{
 <div id="informacoes"></div>
 
 <canvas id="gameCanvas" width="900" height="550"></canvas>
+
+<div id="controlesMobile">
+
+    <button
+        class="controleMobile vazio"
+        type="button"
+        tabindex="-1"
+    ></button>
+
+    <button
+        class="controleMobile"
+        type="button"
+        data-tecla="w"
+        aria-label="Cima"
+    >▲</button>
+
+    <button
+        class="controleMobile vazio"
+        type="button"
+        tabindex="-1"
+    ></button>
+
+    <button
+        class="controleMobile"
+        type="button"
+        data-tecla="a"
+        aria-label="Esquerda"
+    >◀</button>
+
+    <button
+        class="controleMobile"
+        type="button"
+        data-tecla="s"
+        aria-label="Baixo"
+    >▼</button>
+
+    <button
+        class="controleMobile"
+        type="button"
+        data-tecla="d"
+        aria-label="Direita"
+    >▶</button>
+
+    <button
+        class="controleMobile acao"
+        type="button"
+        data-tecla="space"
+    >
+        AÇÃO / ESPAÇO
+    </button>
+
+</div>
 
 <div id="controles"></div>
 
@@ -362,6 +708,197 @@ let mouseY=275;
 
 let tirosNoPeriodo=0;
 let inicioPeriodoTiro=Date.now();
+
+
+/* =========================
+   DISPOSITIVO / MOBILE
+========================= */
+
+const CHAVE_DISPOSITIVO=
+    "gamezone-dispositivo";
+
+
+function aplicarDispositivo(tipo){
+
+    const celular=
+        tipo==="celular";
+
+    document.body.classList.toggle(
+        "modo-celular",
+        celular
+    );
+
+    document.body.classList.toggle(
+        "modo-computador",
+        !celular
+    );
+}
+
+
+function abrirSeletorDispositivo(){
+
+    const seletor=
+        document.getElementById(
+            "seletorDispositivo"
+        );
+
+    seletor.classList.add("ativo");
+    seletor.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+}
+
+
+function fecharSeletorDispositivo(){
+
+    const seletor=
+        document.getElementById(
+            "seletorDispositivo"
+        );
+
+    seletor.classList.remove("ativo");
+    seletor.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+}
+
+
+function escolherDispositivo(tipo){
+
+    aplicarDispositivo(tipo);
+
+    localStorage.setItem(
+        CHAVE_DISPOSITIVO,
+        tipo
+    );
+
+    fecharSeletorDispositivo();
+}
+
+
+function configurarControlesMobile(){
+
+    document
+        .querySelectorAll(
+            ".controleMobile[data-tecla]"
+        )
+        .forEach(botao=>{
+
+            const tecla=
+                botao.dataset.tecla;
+
+
+            const pressionar=e=>{
+
+                e.preventDefault();
+
+                teclas[tecla]=true;
+
+                botao.classList.add(
+                    "pressionado"
+                );
+            };
+
+
+            const soltar=e=>{
+
+                e.preventDefault();
+
+                teclas[tecla]=false;
+
+                botao.classList.remove(
+                    "pressionado"
+                );
+            };
+
+
+            botao.addEventListener(
+                "pointerdown",
+                pressionar
+            );
+
+            botao.addEventListener(
+                "pointerup",
+                soltar
+            );
+
+            botao.addEventListener(
+                "pointercancel",
+                soltar
+            );
+
+            botao.addEventListener(
+                "pointerleave",
+                soltar
+            );
+        });
+
+
+    const atualizarMira=e=>{
+
+        if(
+            e.pointerType!=="touch"&&
+            e.pointerType!=="pen"
+        )
+            return;
+
+
+        const rect=
+            canvas.getBoundingClientRect();
+
+        mouseX=
+            (e.clientX-rect.left)*
+            canvas.width/
+            rect.width;
+
+        mouseY=
+            (e.clientY-rect.top)*
+            canvas.height/
+            rect.height;
+    };
+
+
+    canvas.addEventListener(
+        "pointerdown",
+        atualizarMira
+    );
+
+    canvas.addEventListener(
+        "pointermove",
+        atualizarMira
+    );
+}
+
+
+window.addEventListener(
+    "DOMContentLoaded",
+    ()=>{
+
+        configurarControlesMobile();
+
+
+        const salvo=
+            localStorage.getItem(
+                CHAVE_DISPOSITIVO
+            );
+
+
+        if(
+            salvo==="celular"||
+            salvo==="computador"
+        ){
+
+            aplicarDispositivo(salvo);
+
+        }
+        else{
+
+            abrirSeletorDispositivo();
+        }
+    }
+);
 
 
 /* =========================
